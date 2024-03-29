@@ -1,0 +1,44 @@
+version: "3.8"
+
+services:
+  api:
+    build:
+      dockerfile: Dockerfile
+      context: .
+      target: development
+    volumes:
+      - .:/usman/src/app
+      - /usman/src/app/node_modules/
+    command: npm run start:debug
+    depends_on: 
+      - postgres
+    environment:
+      DATABASE_URL: postgres://user:password@postgres:5432/chat-application
+      NODE_ENV: development
+      JWT_SECRET: hard_to_guess_secret
+      PORT: 3000
+    ports:
+      - 3000:3000
+      - 9229:9229
+  
+  postgres:
+    image: postgres:16.2
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: chat-application
+    volumes:
+      - ../postgres-data:/var/lib/postgresql/data
+    ports:
+      - 5433:5432
+
+  # The Postgres Admin tool if we want to run some custom queries and so on against our Database
+  postgres_admin:
+    image: dpage/pgadmin4:8.4
+    depends_on: 
+      - postgres
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@test.com
+      PGADMIN_DEFAULT_PASSWORD: password
+    ports:
+      - 5050:80
