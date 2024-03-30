@@ -1,6 +1,6 @@
 import { MessageEntity } from "src/message/entity/message.entity";
 import { RoomEntity } from "src/room/entity/room.entity";
-import { BeforeInsert, BeforeUpdate, Column, Entity, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { BeforeInsert, BeforeUpdate, Column, Entity, JoinColumn, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class UserEntity {
@@ -18,6 +18,7 @@ export class UserEntity {
   password: string;
 
   @ManyToMany(() => RoomEntity)
+  @JoinTable({name: 'room_entity_users_user_entity'})
   rooms: RoomEntity[];
 
   @OneToMany(() => MessageEntity, message => message.user)
