@@ -1,16 +1,13 @@
 import { MiddlewareConsumer, Module, NestModule, RequestMethod } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { EventGateway } from './event/event.gateway';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
 import { RoomModule } from './room/room.module';
 import { AuthModule } from './auth/auth.module';
 import { AuthMiddleware } from './middleware/auth.middleware';
-import { UserEntity } from './user/entity/user.entity';
-import { RoomEntity } from './room/entity/room.entity';
+import { MessageModule } from './message/message.module';
 import typeorm from './config/typeorm';
+import { ChatModule } from './chat/chat.module';
 
 @Module({
   imports: [
@@ -22,13 +19,12 @@ import typeorm from './config/typeorm';
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => (configService.get('typeorm'))
     }),
-    EventGateway,
+    ChatModule,
     UserModule,
     RoomModule,
     AuthModule,
+    MessageModule,
   ],
-  controllers: [AppController],
-  providers: [AppService, EventGateway],
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
