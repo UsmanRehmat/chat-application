@@ -42,6 +42,7 @@ You can access pgAdmin on this url
     password: password
 
 You can connect with postgres database server using
+    
     host: postgres
     database: chat-application
     username: user
