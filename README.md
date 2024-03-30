@@ -20,8 +20,14 @@ Install docker at your local
     docker-compose up
 
 ## Api documentation
-I used swagger to document rest apis using open api standards and you can access documentation on http://localhost:3001/api
-For websockets connections I used socket.io. You can create connection with websockets on ws://127.0.0.1:3000
+I used swagger to document rest apis using open api standards and you can access documentation on 
+
+    http://localhost:3001/api
+
+For websockets connections I used socket.io. You can create connection with websockets on 
+
+    ws://127.0.0.1:3000
+
 For chat you can use this 
 event: create-message      
 ----------
@@ -29,15 +35,17 @@ event: create-message
 ## Database
 I used Postgres as a database. PgAdmin and postgres is already setup via docker-compose file
 You can access pgAdmin on this url
-http://localhost:5050
-username: admin@chat.com
-password: password
+
+    http://localhost:5050
+
+    username: admin@chat.com
+    password: password
 
 You can connect with postgres database server using
-host: postgres
-database: chat-application
-username: user
-password: password
+    host: postgres
+    database: chat-application
+    username: user
+    password: password
 
 ----------
 
