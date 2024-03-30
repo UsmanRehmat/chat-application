@@ -4,6 +4,8 @@ import { AppService } from './app.service';
 import { EventGateway } from './event/event.gateway';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { UserModule } from './user/user.module';
+import { RoomModule } from './room/room.module';
 
 @Module({
   imports: [
@@ -11,9 +13,12 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     TypeOrmModule.forRoot({
       type: 'postgres',
       url: process.env.DATABASE_URL,
-      synchronize: true
+      synchronize: true,
+      entities: [__dirname + '/../**/*.entity.js'] 
     }),
     EventGateway,
+    UserModule,
+    RoomModule,
   ],
   controllers: [AppController],
   providers: [AppService, EventGateway],
