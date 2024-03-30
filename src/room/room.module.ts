@@ -8,6 +8,7 @@ import { UserEntity } from 'src/user/entity/user.entity';
 @Module({
   imports: [TypeOrmModule.forFeature([RoomEntity, UserEntity]),],
   providers: [RoomService],
-  controllers: [RoomController]
+  controllers: [RoomController],
+  exports: [RoomService]
 })
 export class RoomModule {}

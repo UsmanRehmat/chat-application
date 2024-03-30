@@ -19,6 +19,7 @@ services:
       PORT: 3000
     ports:
       - 3000:3000
+      - 3001:3001
       - 9229:9229
   
   postgres:

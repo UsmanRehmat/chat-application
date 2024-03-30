@@ -1,5 +1,6 @@
+import { MessageEntity } from "src/message/entity/message.entity";
 import { RoomEntity } from "src/room/entity/room.entity";
-import { BeforeInsert, BeforeUpdate, Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
+import { BeforeInsert, BeforeUpdate, Column, Entity, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class UserEntity {
@@ -18,6 +19,15 @@ export class UserEntity {
 
   @ManyToMany(() => RoomEntity)
   rooms: RoomEntity[];
+
+  @OneToMany(() => MessageEntity, message => message.user)
+  messages: MessageEntity[];
+
+  @Column({nullable: true})
+  socketId?: string;
+
+  @Column({ default: false })
+  isLive: boolean;
 
   @BeforeInsert()
   @BeforeUpdate()

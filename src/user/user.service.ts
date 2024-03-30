@@ -5,6 +5,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { CreateUserDto } from './dto/create-user.dto';
 import { SingInUserDto } from './dto/signin-user.dto';
 import { AuthService } from 'src/auth/service/auth.service';
+import { UpdateUserDto } from './dto/update-user.dto';
 
 @Injectable()
 export class UserService {
@@ -52,12 +53,21 @@ export class UserService {
         });
     }
 
+    async getLiveUsersByRoomId(roomId: number): Promise<UserEntity[]> {
+        return this.userRepository.find({ where: { rooms: { id: roomId } }})
+    }
+
+    async updateUser(updateUserDto: UpdateUserDto): Promise<UserEntity> {
+        const user = this.getUserById(updateUserDto.id);
+        return this.userRepository.save({ ...user, ...updateUserDto});
+    }
+
     private async hashPassword(password: string): Promise<string> {
         return this.authService.hashPassword(password);
-      }
+    }
     
-      private async validatePassword(password: string, storedPasswordHash: string): Promise<any> {
+    private async validatePassword(password: string, storedPasswordHash: string): Promise<any> {
         return this.authService.comparePasswords(password, storedPasswordHash);
-      }
+    }
 
 }

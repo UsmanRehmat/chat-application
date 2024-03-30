@@ -27,5 +27,15 @@ export class RoomService {
         return true;
     }
 
+    async getRoomById(id: number): Promise<RoomEntity> {
+        return this.roomRepository.findOne({where: { id }})
+    }
+
+    async getRoomsByUserId(userId: number): Promise<RoomEntity> {
+        return this.roomRepository.findOne({where: { users: { id: userId} }})
+    }
+
+    
+
 
 }
