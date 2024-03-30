@@ -9,6 +9,7 @@ async function bootstrap() {
     .setDescription('Users can join diiferent chat rooms according to their interest')
     .setVersion('1.0')
     .addTag('Chat')
+    .addBearerAuth()
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
