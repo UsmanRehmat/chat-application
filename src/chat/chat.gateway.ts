@@ -37,7 +37,7 @@ export class ChatGateway implements OnGatewayInit, OnGatewayConnection, OnGatewa
       const updateUser: UpdateUserDto = {
         id: user.id,
         socketId: socket.id,
-        isLive: true;
+        isLive: true,
       };
       await this.userService.updateUser(updateUser);
       const rooms = await this.roomService.getRoomsByUserId(user.id);
@@ -48,11 +48,6 @@ export class ChatGateway implements OnGatewayInit, OnGatewayConnection, OnGatewa
 
   handleDisconnect(client: any) {
     Logger.log('Method not implemented.');
-  }
-
-  @SubscribeMessage('message')
-  async handleMessage(socket: Socket, @MessageBody() createMessageDto: CreateMessageDto): Promise<CreateMessageDto> {
-    return createMessageDto;
   }
 
   @SubscribeMessage('create-message')
