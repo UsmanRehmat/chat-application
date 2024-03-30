@@ -1,6 +1,7 @@
 import { UserEntity } from "src/user/entity/user.entity";
-import { Column, CreateDateColumn, JoinTable, ManyToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
+@Entity()
 export class RoomEntity {
 
     @PrimaryGeneratedColumn()
