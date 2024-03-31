@@ -8,6 +8,9 @@ import { AuthMiddleware } from './middleware/auth.middleware';
 import { MessageModule } from './message/message.module';
 import typeorm from './config/typeorm';
 import { ChatModule } from './chat/chat.module';
+import { APP_FILTER } from '@nestjs/core';
+import { HttpExceptionFilter } from './middleware/http-exception-filter';
+import { AppLoggerMiddleware } from './middleware/logger.middleware';
 
 @Module({
   imports: [
@@ -25,6 +28,12 @@ import { ChatModule } from './chat/chat.module';
     AuthModule,
     MessageModule,
   ],
+  providers: [
+    {
+      provide: APP_FILTER,
+      useClass: HttpExceptionFilter,
+    },
+  ]
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
@@ -34,6 +43,7 @@ export class AppModule implements NestModule {
         { path: '/user', method: RequestMethod.POST},
         { path: '/user/signIn', method: RequestMethod.POST},
       )
-      .forRoutes('')
+      .forRoutes('');
+      consumer.apply(AppLoggerMiddleware).forRoutes('*');
   }
 }
