@@ -74,12 +74,14 @@ Migrations are also setup but it's not required for now and you can use migratio
 
 ## Authentication
  
-    This applications uses JSON Web Token (JWT) to handle authentication for both rest api's and websocket connection. The token is passed with each request using the `Authorization` header with `Token` scheme. The JWT authentication middleware handles the validation and authentication of the token.
+This applications uses JSON Web Token (JWT) to handle authentication for both rest api's and websocket connection. The token is passed with each request using the `Authorization` header with `Token` scheme. The JWT authentication middleware handles the validation and authentication of the token.
 
 ----------
  
  ## Unit Tests
 
-    I added unit tests for all main services like message, rooms, and main user methods and I also covered user controller. Rest of the controllers have just check for dependencies I left rest of the test cases because of time constraint and these are also simpler one.
-     
+
+I added unit tests for all main services like message, rooms, and main user methods and I also covered user controller. Rest of the controllers have just check for dependencies I left rest of the test cases because of time constraint and these are also simpler one.
+
+    npm run test     
 
