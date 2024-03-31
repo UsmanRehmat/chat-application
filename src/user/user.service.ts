@@ -1,4 +1,4 @@
-import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
+import { HttpException, HttpStatus, Injectable, Logger } from "@nestjs/common";
 import { Repository } from "typeorm";
 import { UserEntity } from "./entity/user.entity";
 import { InjectRepository } from "@nestjs/typeorm";
@@ -9,6 +9,7 @@ import { UpdateUserDto } from "./dto/update-user.dto";
 
 @Injectable()
 export class UserService {
+  logger = new Logger(UserService.name);
   constructor(
     @InjectRepository(UserEntity)
     private readonly userRepository: Repository<UserEntity>,
@@ -16,6 +17,7 @@ export class UserService {
   ) {}
 
   async createUser(createUserDto: CreateUserDto) {
+    this.logger.debug('createUser');
     const user = await this.findUserByUsername(createUserDto.username);
     if (user) {
       throw new HttpException("Username already exists", HttpStatus.CONFLICT);
@@ -28,6 +30,7 @@ export class UserService {
   }
 
   async signIn(signInUserDto: SingInUserDto) {
+    this.logger.debug('signIn');
     const user = await this.getUserByEmail(signInUserDto.email);
     if (!user) {
       throw new HttpException("User not found", HttpStatus.NOT_FOUND);
@@ -43,14 +46,17 @@ export class UserService {
   }
 
   async findUserByUsername(username: string) {
+    this.logger.debug('findUserByUsername');
     return this.userRepository.findOne({ where: { username } });
   }
 
   async getUserById(id: number) {
+    this.logger.debug('getUserById');
     return this.userRepository.findOne({ where: { id } });
   }
 
   async getUserByEmail(email: string) {
+    this.logger.debug('getUserByEmail');
     return this.userRepository.findOne({
       where: { email },
       select: ["id", "email", "password", "username"],

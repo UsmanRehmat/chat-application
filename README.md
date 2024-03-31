@@ -92,3 +92,16 @@ I added unit tests for all main services like message, rooms, and main user meth
 you can find swagger-spec open api specification file in root directory
     swagger-spec.json
 You can import this file directly import in postman
+
+----------
+
+## Global Exception Filters
+
+Added global exception filters to catch every exception of the backend server
+
+----------
+
+## Logger
+
+Added logs for each request and then different log for every component
+
