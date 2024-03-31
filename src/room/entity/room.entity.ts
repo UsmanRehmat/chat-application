@@ -1,5 +1,5 @@
-import { MessageEntity } from "src/message/entity/message.entity";
-import { UserEntity } from "src/user/entity/user.entity";
+import { MessageEntity } from "../../message/entity/message.entity";
+import { UserEntity } from "../../user/entity/user.entity";
 import { Column, CreateDateColumn, Entity, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity()
@@ -16,10 +16,10 @@ export class RoomEntity {
   
     @ManyToMany(() => UserEntity)
     @JoinTable()
-    users: UserEntity[];
+    users?: UserEntity[];
   
     @OneToMany(() => MessageEntity, message => message.room)
-    messages: MessageEntity[];
+    messages?: MessageEntity[];
 
     @CreateDateColumn()
     createdAt: Date;

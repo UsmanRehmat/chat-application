@@ -4,7 +4,7 @@ import { CreateRoomDto } from './dto/create-room.dto';
 import { RoomEntity } from './entity/room.entity';
 import { ApiBearerAuth } from '@nestjs/swagger';
 import { JoinRoomDto } from './dto/join-room.dto';
-import { MessageEntity } from 'src/message/entity/message.entity';
+import { MessageEntity } from '../message/entity/message.entity';
 
 @Controller('room')
 export class RoomController {

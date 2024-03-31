@@ -9,7 +9,7 @@ export class MessageService {
 
     constructor(@InjectRepository(MessageEntity) private readonly messageRepository: Repository<MessageEntity>) {}
 
-    async createMessage(createMessageDto: CreateMessageDto) {
+    async createMessage(createMessageDto: CreateMessageDto): Promise<MessageEntity> {
        return this.messageRepository.save(this.messageRepository.create(createMessageDto));
     }
 
