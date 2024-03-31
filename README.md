@@ -85,3 +85,10 @@ I added unit tests for all main services like message, rooms, and main user meth
 
     npm run test     
 
+----------
+
+## Postman Collection
+
+you can find swagger-spec open api specification file in root directory
+    swagger-spec.json
+You can import this file directly import in postman
