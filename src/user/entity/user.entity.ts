@@ -1,5 +1,5 @@
-import { MessageEntity } from "src/message/entity/message.entity";
-import { RoomEntity } from "src/room/entity/room.entity";
+import { MessageEntity } from "../../message/entity/message.entity";
+import { RoomEntity } from "../../room/entity/room.entity";
 import { BeforeInsert, BeforeUpdate, Column, Entity, JoinColumn, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()

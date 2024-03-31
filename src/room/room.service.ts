@@ -3,10 +3,10 @@ import { Repository } from 'typeorm';
 import { RoomEntity } from './entity/room.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateRoomDto } from './dto/create-room.dto';
-import { UserEntity } from 'src/user/entity/user.entity';
-import { UserService } from 'src/user/user.service';
-import { MessageService } from 'src/message/message.service';
-import { MessageEntity } from 'src/message/entity/message.entity';
+import { UserEntity } from '../user/entity/user.entity';
+import { UserService } from '../user/user.service';
+import { MessageService } from '../message/message.service';
+import { MessageEntity } from '../message/entity/message.entity';
 
 @Injectable()
 export class RoomService {
