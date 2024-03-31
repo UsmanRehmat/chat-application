@@ -4,7 +4,7 @@ import { UserEntity } from "./entity/user.entity";
 import { InjectRepository } from "@nestjs/typeorm";
 import { CreateUserDto } from "./dto/create-user.dto";
 import { SingInUserDto } from "./dto/signin-user.dto";
-import { AuthService } from "src/auth/service/auth.service";
+import { AuthService } from "../auth/service/auth.service";
 import { UpdateUserDto } from "./dto/update-user.dto";
 
 @Injectable()

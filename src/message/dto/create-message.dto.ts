@@ -3,6 +3,6 @@ import { UserEntity } from "src/user/entity/user.entity";
 
 export class CreateMessageDto {
     text: string;
-    user?: UserEntity;
-    room: RoomEntity;
+    user?: Partial<UserEntity>;
+    room: Partial<RoomEntity>;
 }
