@@ -15,20 +15,20 @@ export class UserEntity {
   email: string;
 
   @Column({select: false})
-  password: string;
+  password?: string;
 
   @ManyToMany(() => RoomEntity)
   @JoinTable({name: 'room_entity_users_user_entity'})
-  rooms: RoomEntity[];
+  rooms?: RoomEntity[];
 
   @OneToMany(() => MessageEntity, message => message.user)
-  messages: MessageEntity[];
+  messages?: MessageEntity[];
 
   @Column({nullable: true})
   socketId?: string;
 
   @Column({ default: false })
-  isLive: boolean;
+  isLive?: boolean;
 
   @BeforeInsert()
   @BeforeUpdate()

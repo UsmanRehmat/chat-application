@@ -16,10 +16,10 @@ export class RoomEntity {
   
     @ManyToMany(() => UserEntity)
     @JoinTable()
-    users: UserEntity[];
+    users?: UserEntity[];
   
     @OneToMany(() => MessageEntity, message => message.room)
-    messages: MessageEntity[];
+    messages?: MessageEntity[];
 
     @CreateDateColumn()
     createdAt: Date;

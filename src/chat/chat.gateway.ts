@@ -14,12 +14,12 @@ import {
   WebSocketServer,
 } from "@nestjs/websockets";
 import { Server, Socket } from "socket.io";
-import { CreateMessageDto } from "src/message/dto/create-message.dto";
-import { MessageService } from "src/message/message.service";
-import { RoomService } from "src/room/room.service";
-import { UserService } from "src/user/user.service";
-import { AuthService } from "src/auth/service/auth.service";
-import { UpdateUserDto } from "src/user/dto/update-user.dto";
+import { CreateMessageDto } from "../message/dto/create-message.dto";
+import { MessageService } from "../message/message.service";
+import { RoomService } from "../room/room.service";
+import { UserService } from "../user/user.service";
+import { AuthService } from "../auth/service/auth.service";
+import { UpdateUserDto } from "../user/dto/update-user.dto";
 
 @WebSocketGateway(3000, { transports: ["websocket"] })
 export class ChatGateway
